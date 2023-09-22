@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Css.css">
+    <link rel="icon" href="images/icon.png">
+  
+    <title>حساب العمر</title>
+    <style>
+    
+    </style>
+</head>
+<body dir="rtl">
+  
+
+    <img id="ag" src="images/age.jpg" alt="صورة حساب العمر" />
+
+
+<img id="ag2" src="images/my logo2.png" alt="">
+
+    <h1>موقع حساب العمر</h1>
+    <label for="day">اليوم:</label>
+    <select id="day">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+    </select>
+    <label for="month">الشهر:</label>
+    <select id="month">
+        <option value="1">1 - يناير</option>
+        <option value="2">2 - فبراير</option>
+        <option value="3">3 - مارس</option>
+        <option value="4">4 - إبريل</option>
+        <option value="5">5 - مايو</option>
+        <option value="6">6 - يونيو</option>
+        <option value="7">7 - يوليو</option>
+        <option value="8">8 - أغسطس</option>
+        <option value="9">9 - سبتمبر</option>
+        <option value="10">10 - أكتوبر</option>
+        <option value="11">11 - نوفمبر</option>
+        <option value="12">12 - ديسمبر</option>
+    </select>
+    <label for="year">السنة:</label>
+    <select id="year">
+        <!-- إضافة السنوات من 1920 إلى السنة الحالية -->
+        <script>
+            var currentYear = new Date().getFullYear();
+            for (var year = 1920; year <= currentYear; year++) {
+                document.write('<option value="' + year + '">' + year + '</option>');
+            }
+        </script>
+    </select>
+    <br>
+    <button onclick="calculateAge()">احسب العمر</button>
+    <p id="resultYearsMonthsDays"></p>
+    <p id="resultMonths"></p>
+    <p id="resultWeeks"></p>
+
+    <script>
+        function calculateAge() {
+            var day = parseInt(document.getElementById("day").value);
+            var month = parseInt(document.getElementById("month").value);
+            var year = parseInt(document.getElementById("year").value);
+            
+            var birthdate = new Date(year, month - 1, day); // شهر - 1 لأن الأشهر تبدأ من 0
+            var today = new Date();
+            
+            var ageYears = today.getFullYear() - birthdate.getFullYear();
+            var ageMonths = today.getMonth() - birthdate.getMonth();
+            var ageDays = today.getDate() - birthdate.getDate();
+            
+            if (ageDays < 0) {
+                ageMonths--;
+                ageDays += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+            }
+            
+            if (ageMonths < 0) {
+                ageYears--;
+                ageMonths += 12;
+            }
+            
+            var ageWeeks = Math.floor((today - birthdate) / (7 * 24 * 60 * 60 * 1000));
+            
+            document.getElementById("resultYearsMonthsDays").innerHTML = "عمرك هو " + ageYears + " سنة و " + ageMonths + " شهر و " + ageDays + " يوم";
+            document.getElementById("resultMonths").innerHTML = " أو عمرك "   + (ageYears * 12 + ageMonths) + " شهر";
+            document.getElementById("resultWeeks").innerHTML = " أو يكون " + ageWeeks + " أسبوع";
+        }
+    </script>
+    <br><br><br><br><br>
+   <div id="divpp">
+    <li id="p1">
+        هذا الموقع هو أداة رائعة لحساب العمر بسهولة ودقة. يتيح للمستخدمين إدخال تاريخ ميلادهم ومعرفة عمرهم بالسنوات والشهور والأيام بالإضافة إلى الأسابيع.
+    </p>
+
+    <li id="p2">
+        يتميز الموقع بتصميم بسيط وجذاب يجعله سهل الاستخدام للجميع.
+    </p>
+
+    <li id="p3">
+        بالإضافة إلى ذلك، يوفر الموقع مجموعة متنوعة من التصاميم والرسومات لجعل تجربة الاستخدام أكثر جاذبية. سواء كنت تحتاج إلى معرفة عمرك بدقة أو ترغب في إضافة جاذبية إلى موقع الحساب، فإن هذه الأداة هي الخيار المثالي.
+    </p>
+
+    <li id="p4">
+        استخدم الموقع الآن لاحتساب عمرك بسرعة وبدقة، واستمتع بتصميمه الأنيق والواجهة السهلة الاستخدام.
+    </p>
+
+    <li id="p5">
+        تجربة فريدة تنتظرك، قم بزيارة الموقع اليوم واكتشف عمرك بطريقة جديدة وممتعة.
+    </p>
+</div>
+
+    
+<section id="sect">
+    <h3>تطوير وتصميم بواسطة_ نور الدين</h3>
+    <h3>جميع الحقوق محفوظة @copyright; 2023</h3>
+    <div style="text-align: right;">
+        <img src="images/phone.png" alt="صورة الهاتف" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 5px;">
+        <p style="display: inline;">اتصل بنا على: <a href="tel:+970594064135">+970 594 064 135</a></p>
+    </div>
+    
+   
+</section>
+
+</body>
+</html>

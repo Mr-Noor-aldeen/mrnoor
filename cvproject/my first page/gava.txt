@@ -1,0 +1,106 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javafxapplication1;
+
+import ModelProject.FinalProject.test.src.finalproject.Teacher;
+import ModelProject.FinalProject.test.src.finalproject.utils;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+
+
+/**
+ * FXML Controller class
+ *
+ * @author nwrqw
+ */
+public class ViowteacherController implements Initializable {
+ @FXML
+    private TableView<Teacher> tableView;
+    @FXML
+    private TableColumn<Teacher, String> viow_name_th;
+    @FXML
+    private TableColumn<Teacher, String> viow_username_th;
+    @FXML
+    private TableColumn<Teacher, String> viow_gender_th;
+    @FXML
+    private TableColumn<Teacher, String> viow_Specialty_th;
+    @FXML
+    private TableColumn<Teacher, Double> viow_salary_th;
+    @FXML
+    private Button back_viowTE;
+    @FXML
+    private Button ExportViowTh;
+   
+    /**
+     * Initializes the controller class.
+     * @param url
+     * @param rb
+     */
+     @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        
+        viow_name_th      .   setCellValueFactory    (new PropertyValueFactory    <>   ("name")       );
+        viow_username_th  .   setCellValueFactory    (new PropertyValueFactory    <>   ("userName")   );
+        viow_gender_th    .   setCellValueFactory    (new PropertyValueFactory    <>   ("Gender")     );
+        viow_Specialty_th .   setCellValueFactory    (new PropertyValueFactory    <>   ("specialty")  );
+        viow_salary_th    .   setCellValueFactory    (new PropertyValueFactory    <>   ("salary")     );
+        
+        tableView.getItems().addAll(utils.AllTeacher);
+        }
+    @FXML
+    private void back_viowTE(ActionEvent event)  throws IOException {
+        
+        Parent root = FXMLLoader.load(getClass().getResource("admin.fxml"));
+        
+        Scene scene = new Scene(root);
+        Stage  stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void ExportViowTh(ActionEvent event) {
+        try {
+        FileWriter fileWriter = new FileWriter("dataTeacher.txt", true); // 
+        PrintWriter printWriter = new PrintWriter(fileWriter);
+
+        // كتابة صف العنوان
+        printWriter.println("Name | Username | Gender | Specialty | Salary");
+        printWriter.println("-----------------------------------------------");
+
+        // استرداد البيانات من الجدول وكتابتها في الملف
+        for (Teacher teacher : tableView.getItems()) {
+            printWriter.println(teacher.getName() + " | " +
+                                teacher.getUserName() + " | " +
+                                teacher.getGender() + " | " +
+                                teacher.getSpecialty() + " | " +
+                                teacher.getSalary());
+        }
+
+        printWriter.close();
+        System.out.println("تم حفظ البيانات بنجاح في الملف.");
+    } catch (IOException e) {
+        System.out.println("حدث خطأ أثناء حفظ البيانات في الملف.");
+        e.printStackTrace();
+    }
+    }
+    
+}

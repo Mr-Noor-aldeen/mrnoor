@@ -1,0 +1,99 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: #333;
+}
+
+label {
+    font-weight: bold;
+}
+
+select {
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+p {
+    font-size: 18px;
+    margin-top: 20px;
+    color: #333;
+}
+
+@keyframes slideIn {
+from {
+transform: translateX(-100%);
+}
+to {
+transform: translateX(0);
+}
+}
+
+h1 {
+animation: slideIn 1s ease;
+}
+button {
+padding: 10px 20px;
+background-color: #007BFF;
+color: #fff;
+border: none;
+cursor: pointer;
+font-size: 16px;
+margin-top: 10px;
+transition: background-color 0.9s ease;
+}
+
+button:hover {
+background-color: #0056b3;
+}
+/* تغيير لون نصوص النتائج إلى اللون الأزرق */
+p#resultYearsMonthsDays,
+p#resultMonths,
+p#resultWeeks {
+color: #ff0000;
+}
+
+#ag{
+height: 30%;
+width: 30%;
+margin-left: 15%;
+}
+
+
+#ag2{
+
+float: right;
+
+}
+
+#divpp{
+    text-align: right;
+     padding-right: 5%; 
+     padding-left: 10%;
+}
+#p1,#p2,#p3,#p4,#p5{
+    font-size: 20px; 
+    color: #333;
+     line-height: 1.2;
+
+}
+
+#sect{
+    text-align: center;
+     background-color: #333;
+      color: #fff;
+       padding: 20px;
+}
